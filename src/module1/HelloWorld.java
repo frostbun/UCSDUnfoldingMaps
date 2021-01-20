@@ -27,7 +27,7 @@ public class HelloWorld extends PApplet
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
 	
 	// IF YOU ARE WORKING OFFLINE: Change the value of this variable to true
-	private static final boolean offline = false;
+	private static final boolean offline = true;
 	
 	/** The map we use to display our home town: La Jolla, CA */
 	UnfoldingMap map1;
@@ -36,7 +36,7 @@ public class HelloWorld extends PApplet
 	UnfoldingMap map2;
 
 	public void setup() {
-		size(800, 600, P2D);  // Set up the Applet window to be 800x600
+		size(800, 600);  // Set up the Applet window to be 800x600
 		                      // The OPENGL argument indicates to use the 
 		                      // Processing library's 2D drawing
 		                      // You'll learn more about processing in Module 3
@@ -73,17 +73,16 @@ public class HelloWorld extends PApplet
 		
 		// This line makes the map interactive
 		MapUtils.createDefaultEventDispatcher(this, map1);
-		
-		// TODO: Add code here that creates map2 
-		// Then you'll modify draw() below
 
+		map2 = new UnfoldingMap(this, 400, 50, 350, 500, provider);
+	    map2.zoomAndPanTo(zoomLevel, new Location(20.2451965, 105.940432));
+		MapUtils.createDefaultEventDispatcher(this, map2);
 	}
 
 	/** Draw the Applet window.  */
 	public void draw() {
-		// So far we only draw map1...
-		// TODO: Add code so that both maps are displayed
 		map1.draw();
+		map2.draw();
 	}
 
 	

@@ -16,20 +16,26 @@ public class MyPApplet extends PApplet{
 	
 	public void setup() {
 		//Add setup code for MyPApplet
-		size(400,400);				//set canvas size
-		background(255);			//set canvas color
+		size(800, 800);				//set canvas size
+		// background(255);			//set canvas color
 		stroke(0);				//set pen color
-		img = loadImage("palmTrees.jpg", "jpg");
+		// img = loadImage("palmTrees.jpg", "jpg");
 	}
 	
 	public void draw() {
 		//Add drawing code for MyPApplet
-		img.resize(0, height);			//resize loaded image to full height of canvas
-		image(img, 0, 0);			//display image 
-		int[] color = sunColorSec(second());		//calculate color code for sun
-		fill(color[0],color[1],color[2]);	//set sun color
-		ellipse(width/4,height/5,width/4,height/5);	//draw sun
-		
+		// img.resize(0, height);			//resize loaded image to full height of canvas
+		// image(img, 0, 0);			//display image 
+		// int[] color = sunColorSec(second());		//calculate color code for sun
+		// fill(color[0],color[1],color[2]);	//set sun color
+		// ellipse(width/4,height/5,width/4,height/5);	//draw sun
+		fill(255, 0, 0);
+		ellipse(400, 400, 800, 800);
+		fill(0, 0, 255);
+		ellipse(250, 300, 200, 200);
+		ellipse(800 - 250, 300, 200, 200);
+		// noFill();
+		arc(400, 600, 200, 200, 0, PI);
 	}
 	
 	/** Return the RGB color of the sun at this number of seconds in the minute */
