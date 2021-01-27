@@ -31,8 +31,9 @@ public class LifeExpectancy extends PApplet {
 	List<Marker> countryMarkers;
 
 	public void setup() {
-		size(800, 600, OPENGL);
-		map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
+		size(800, 600);
+		// map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
+		map = new UnfoldingMap(this, 50, 50, 700, 500, new MBTilesMapProvider("blankLight-1-3.mbtiles"));
 		MapUtils.createDefaultEventDispatcher(this, map);
 
 		// Load lifeExpectancy data
