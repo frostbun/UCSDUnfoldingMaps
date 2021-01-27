@@ -146,19 +146,19 @@ public class EarthquakeCityMap extends PApplet {
 	{	
 		// Remember you can use Processing's graphics methods here
 		fill(color(150, 150, 0));
-		rect(0, 50, 200, 500, 10);
+		rect(10, 50, 180, 500, 10);
 
-		textSize(10);
+		textSize(15);
 		fill(color(255, 0, 0));
-		ellipse(60, 100, 15, 15);
+		ellipse(50, 100, 15, 15);
 		text("5.0+ magnitude", 80, 110);
 		
 		fill(color(255, 255, 0));
-		ellipse(60, 150, 10, 10);
+		ellipse(50, 150, 10, 10);
 		text("4.0+ magnitude", 80, 160);
 		
 		fill(color(0, 0, 255));
-		ellipse(60, 200, 5, 5);
+		ellipse(50, 200, 5, 5);
 		text("below 4.0 magnitude", 80, 210);
 	}
 }
