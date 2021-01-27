@@ -119,12 +119,15 @@ public class EarthquakeCityMap extends PApplet {
 	    
 		if(mag < THRESHOLD_LIGHT) {
 			marker.setColor(color(0, 0, 255));
+			marker.setRadius(5);
 		}
 		else if(mag > THRESHOLD_MODERATE) {
 			marker.setColor(color(255, 0, 0));
+			marker.setRadius(15);
 		}
 		else {
 			marker.setColor(yellow);
+			marker.setRadius(10);
 		}
 		
 	    // Finally return the marker
@@ -142,6 +145,20 @@ public class EarthquakeCityMap extends PApplet {
 	private void addKey() 
 	{	
 		// Remember you can use Processing's graphics methods here
-	
+		fill(color(150, 150, 0));
+		rect(50, 50, 100, 500, 10);
+
+		textSize(30);
+		fill(color(255, 0, 0));
+		ellipse(60, 100, 10, 10);
+		text("5.0+ magnitude", 80, 100);
+		
+		fill(color(255, 255, 0));
+		ellipse(60, 150, 20, 20);
+		text("4.0+ magnitude", 80, 150);
+		
+		fill(color(0, 0, 255));
+		ellipse(60, 200, 30, 30);
+		text("below 4.0 magnitude", 80, 200);
 	}
 }
