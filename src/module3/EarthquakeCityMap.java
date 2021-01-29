@@ -33,7 +33,7 @@ public class EarthquakeCityMap extends PApplet {
 	private static final long serialVersionUID = 1L;
 
 	// IF YOU ARE WORKING OFFLINE, change the value of this variable to true
-	private static final boolean offline = true;
+	private static final boolean offline = false;
 	
 	// Less than this threshold is a light earthquake
 	public static final float THRESHOLD_MODERATE = 5;
@@ -51,7 +51,7 @@ public class EarthquakeCityMap extends PApplet {
 
 	
 	public void setup() {
-		size(950, 600);
+		size(950, 600, OPENGL);
 
 		if (offline) {
 		    map = new UnfoldingMap(this, 200, 50, 700, 500, new MBTilesMapProvider(mbTilesString));
@@ -150,15 +150,15 @@ public class EarthquakeCityMap extends PApplet {
 
 		textSize(15);
 		fill(color(255, 0, 0));
-		ellipse(50, 100, 15, 15);
-		text("5.0+ magnitude", 80, 110);
+		ellipse(20, 100, 15, 15);
+		text("5.0+ magnitude", 50, 105);
 		
 		fill(color(255, 255, 0));
-		ellipse(50, 150, 10, 10);
-		text("4.0+ magnitude", 80, 160);
+		ellipse(20, 150, 10, 10);
+		text("4.0+ magnitude", 50, 155);
 		
 		fill(color(0, 0, 255));
-		ellipse(50, 200, 5, 5);
-		text("below 4.0 magnitude", 80, 210);
+		ellipse(20, 200, 5, 5);
+		text("below 4.0 magnitude", 50, 205);
 	}
 }
