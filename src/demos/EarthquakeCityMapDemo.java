@@ -26,9 +26,6 @@ public class EarthquakeCityMapDemo extends PApplet {
 	// You can ignore this.  It's to keep eclipse from generating a warning.
 	//private static final long serialVersionUID = 1L;
 
-	// IF YOU ARE WORKING OFFLINE, change the value of this variable to true
-	private static final boolean offline = true;
-	
 	// Less than this threshold is a light earthquake
 	public static final float THRESHOLD_MODERATE = 5;
 	// Less than this threshold is a minor earthquake
@@ -39,10 +36,6 @@ public class EarthquakeCityMapDemo extends PApplet {
 	
 	// The map
 	private UnfoldingMap map;
-	
-	//feed with magnitude 2.5+ Earthquakes
-	private String earthquakesURL = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.atom";
-
 	
 	public void setup() {
 		size(950, 600);
@@ -170,14 +163,6 @@ public class EarthquakeCityMapDemo extends PApplet {
 
 	}
 		
-	// A suggested helper method that takes in an earthquake feature and 
-	// returns a SimplePointMarker for that earthquake
-	private SimplePointMarker createMarker(PointFeature feature)
-	{
-		// finish implementing and use this method, if it helps.
-		return new SimplePointMarker(feature.getLocation());
-	}
-	
 	public void draw() {
 	    background(10);
 	    map.draw();
