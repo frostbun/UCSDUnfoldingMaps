@@ -21,6 +21,10 @@ import processing.core.PApplet;
  */
 public class LifeExpectancy extends PApplet {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	UnfoldingMap map;
 	Map<String, Float> lifeExpByCountry;
 	List<Feature> countries;

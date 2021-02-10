@@ -8,6 +8,11 @@ import de.fhpotsdam.unfolding.utils.MapUtils;
  */
 public class OfflineMapApp extends PApplet {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static String mbTilesString = "blankLight-1-3.mbtiles";
 
 	UnfoldingMap map;

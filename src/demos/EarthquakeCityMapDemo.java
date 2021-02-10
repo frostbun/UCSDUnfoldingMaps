@@ -26,6 +26,10 @@ public class EarthquakeCityMapDemo extends PApplet {
 	// You can ignore this.  It's to keep eclipse from generating a warning.
 	//private static final long serialVersionUID = 1L;
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	// Less than this threshold is a light earthquake
 	public static final float THRESHOLD_MODERATE = 5;
 	// Less than this threshold is a minor earthquake

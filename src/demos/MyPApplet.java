@@ -12,6 +12,10 @@ import processing.core.PImage;
  *
  */
 public class MyPApplet extends PApplet{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
 	PImage img;
 	
 	public void setup() {

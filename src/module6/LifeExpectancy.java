@@ -5,7 +5,6 @@ import de.fhpotsdam.unfolding.UnfoldingMap;
 import de.fhpotsdam.unfolding.utils.MapUtils;
 import parsing.ParseFeed;
 import de.fhpotsdam.unfolding.providers.*;
-import de.fhpotsdam.unfolding.providers.Google.*;
 
 import java.util.List;
 import de.fhpotsdam.unfolding.data.Feature;
@@ -25,14 +24,19 @@ import de.fhpotsdam.unfolding.marker.Marker;
  */
 public class LifeExpectancy extends PApplet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	UnfoldingMap map;
 	HashMap<String, Float> lifeExpMap;
 	List<Feature> countries;
 	List<Marker> countryMarkers;
 
 	public void setup() {
-		size(800, 600, OPENGL);
-		map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
+		size(800, 800);
+		// map = new UnfoldingMap(this, 50, 50, 700, 500, new Google.GoogleMapProvider());
+	    map = new UnfoldingMap(this, 0, 0, 750, 750, new MBTilesMapProvider("blankLight-1-3.mbtiles"));
 		MapUtils.createDefaultEventDispatcher(this, map);
 
 		// Load lifeExpectancy data
