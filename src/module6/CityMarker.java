@@ -86,6 +86,6 @@ public class CityMarker extends CommonMarker {
 	}
 
 	public String toString() {
-		return String.format("%s, %s (pop: %f mil)", getCity(), getCountry(), getPopulation());
+		return String.format("%s, %s (pop: %.0f mil)", getCity(), getCountry(), getPopulation());
 	}
 }
