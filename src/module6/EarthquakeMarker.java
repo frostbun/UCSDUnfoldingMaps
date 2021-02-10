@@ -125,7 +125,7 @@ public abstract class EarthquakeMarker extends CommonMarker implements Comparabl
 	public double threatCircle() {	
 		double miles = 20.0f * Math.pow(1.8, 2*getMagnitude()-5);
 		double km = (miles * kmPerMile);
-		return km;
+		return km*1.5;
 	}
 	
 	// determine color of marker from depth
@@ -178,8 +178,4 @@ public abstract class EarthquakeMarker extends CommonMarker implements Comparabl
 	{
 		return isOnLand;
 	}
-	
-
-	
-	
 }

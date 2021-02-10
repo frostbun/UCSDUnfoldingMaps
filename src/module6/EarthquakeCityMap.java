@@ -64,7 +64,10 @@ public class EarthquakeCityMap extends PApplet {
 	// NEW IN MODULE 5
 	private CommonMarker lastSelected;
 	private CommonMarker lastClicked;
-	
+	private boolean isEarthquake;
+	private int lastMouseX;
+	private int lastMouseY;
+
 	public void setup() {		
 		// (1) Initializing canvas and map tiles
 		size(900, 700);
@@ -116,15 +119,14 @@ public class EarthquakeCityMap extends PApplet {
 	    }
 
 	    // could be used for debugging
-	    printQuakes();
-		sortAndPrint(20);
+	    // printQuakes();
+		// sortAndPrint(20);
 	 		
 	    // (3) Add markers to map
 	    //     NOTE: Country markers are not added to the map.  They are used
 	    //           for their geometric properties
 	    map.addMarkers(quakeMarkers);
 	    map.addMarkers(cityMarkers);
-	    
 	    
 	}  // End setup
 	
@@ -133,9 +135,50 @@ public class EarthquakeCityMap extends PApplet {
 		background(0);
 		map.draw();
 		addKey();
-		
+		if (lastClicked != null) {
+			showPopUp();
+		}
 	}
 	
+	private void showPopUp() {
+		float maxWidth = textWidth(lastClicked.toString());
+		List<Marker> nearby = new ArrayList<>();
+		nearby.add(lastClicked);
+		
+		// Search for nearby
+		if (isEarthquake) {
+			EarthquakeMarker quake = (EarthquakeMarker) lastClicked;
+			for (Marker city: cityMarkers) {
+				if (city.getDistanceTo(quake.getLocation()) <= quake.threatCircle()) {
+					nearby.add(city);
+					maxWidth = Math.max(maxWidth, textWidth(city.toString()));
+				}
+			}
+		}
+		else {
+			CityMarker city = (CityMarker) lastClicked;
+			for (Marker tmp: quakeMarkers){
+				EarthquakeMarker quake = (EarthquakeMarker) tmp;
+				if (city.getDistanceTo(quake.getLocation()) <= quake.threatCircle()) {
+					nearby.add(quake);
+					maxWidth = Math.max(maxWidth, textWidth(quake.toString()));
+				}
+			}
+		}
+		
+		// Draw popup
+		fill(255);
+		rect(lastMouseX, lastMouseY, maxWidth+10, nearby.size()*13+10);
+
+		fill(0);
+		textSize(12);
+		int y = lastMouseY+10;
+		for(Marker marker: nearby) {
+			text(marker.toString(), lastMouseX+5, y);
+			y += 13;
+		}
+	}
+
 	private void sortAndPrint(int numToPrint) {
 		ArrayList<EarthquakeMarker> quakes = new ArrayList<>();
 		for(Marker quake: quakeMarkers) {
@@ -194,6 +237,7 @@ public class EarthquakeCityMap extends PApplet {
 	{
 		if (lastClicked != null) {
 			unhideMarkers();
+			lastClicked.setClicked(false);
 			lastClicked = null;
 		}
 		else if (lastClicked == null) 
@@ -214,6 +258,13 @@ public class EarthquakeCityMap extends PApplet {
 		for (Marker marker : cityMarkers) {
 			if (!marker.isHidden() && marker.isInside(map, mouseX, mouseY)) {
 				lastClicked = (CommonMarker)marker;
+
+				// Save info to display popup
+				lastClicked.setClicked(true);
+				isEarthquake = false;
+				lastMouseX = mouseX;
+				lastMouseY = mouseY;
+
 				// Hide all the other earthquakes and hide
 				for (Marker mhide : cityMarkers) {
 					if (mhide != lastClicked) {
@@ -229,7 +280,7 @@ public class EarthquakeCityMap extends PApplet {
 				}
 				return;
 			}
-		}		
+		}
 	}
 	
 	// Helper method that will check if an earthquake marker was clicked on
@@ -242,6 +293,13 @@ public class EarthquakeCityMap extends PApplet {
 			EarthquakeMarker marker = (EarthquakeMarker)m;
 			if (!marker.isHidden() && marker.isInside(map, mouseX, mouseY)) {
 				lastClicked = marker;
+
+				// Save info to display popup
+				lastClicked.setClicked(true);
+				isEarthquake = true;
+				lastMouseX = mouseX;
+				lastMouseY = mouseY;
+
 				// Hide all the other earthquakes and hide
 				for (Marker mhide : quakeMarkers) {
 					if (mhide != lastClicked) {

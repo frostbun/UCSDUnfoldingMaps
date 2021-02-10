@@ -42,7 +42,7 @@ public abstract class CommonMarker extends SimplePointMarker {
 		// For starter code just drawMaker(...)
 		if (!hidden) {
 			drawMarker(pg, x, y);
-			if (selected) {
+			if (selected && !clicked) {
 				showTitle(pg, x, y);
 			}
 		}
